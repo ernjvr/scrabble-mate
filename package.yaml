@@ -1,0 +1,48 @@
+name:                scrabble-mate
+version:             0.1.0.0
+github:              "ernjvr/scrabble-mate"
+license:             BSD3
+author:              "ernjvr"
+maintainer:          "ernjvr@gmail.com"
+copyright:           "ernjvr"
+
+extra-source-files:
+- README.md
+- ChangeLog.md
+
+# Metadata used when publishing your package
+# synopsis:            Short description of your package
+# category:            learning
+
+# To avoid duplicated efforts in documentation and dealing with the
+# complications of embedding Haddock markup inside cabal files, it is
+# common to point users to the README.md file.
+description:         Please see the README on GitHub at <https://github.com/ernjvr/scrabble-mate#readme>
+
+dependencies:
+- base >= 4.7 && < 5
+
+library:
+  source-dirs: src
+
+executables:
+  scrabble-mate-exe:
+    main:                Main.hs
+    source-dirs:         app
+    ghc-options:
+    - -threaded
+    - -rtsopts
+    - -with-rtsopts=-N
+    dependencies:
+    - scrabble-mate
+
+tests:
+  scrabble-mate-test:
+    main:                Spec.hs
+    source-dirs:         test
+    ghc-options:
+    - -threaded
+    - -rtsopts
+    - -with-rtsopts=-N
+    dependencies:
+    - scrabble-mate
