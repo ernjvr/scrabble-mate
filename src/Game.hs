@@ -5,6 +5,10 @@ module Game
     , displayTurnCounter
     , displayTurnResult
     , displayScore
+    , displayRandomString
+    , displayUserPrompt
+    , displayCharsValidity
+    , displayGameComplete
     ) where
 
 import System.Random
@@ -35,4 +39,20 @@ displayTurnResult result =
         putStrLn $ "Sorry! You entered an invalid word."
 
 displayScore :: Int -> IO()
-displayScore score = putStrLn $ "Score: " ++ show score
+displayScore scoreboard = putStrLn $ "Score: " ++ show scoreboard
+
+displayRandomString :: String -> IO()
+displayRandomString randomString = putStrLn $ "Random letters: " ++ show randomString
+
+displayUserPrompt :: IO()
+displayUserPrompt = putStr "Please enter a word using a combination of the letters above: "
+
+displayCharsValidity :: Bool -> IO()
+displayCharsValidity validChars =
+  if validChars then
+      putStrLn $ "All characters entered are valid :)"
+    else
+      putStrLn $ "Sorry! The characters entered are invalid. Please only use characters from the random letters above. Do not to use more of the same type of characters than what is provided above."
+
+displayGameComplete :: Int ->  IO()
+displayGameComplete scoreboard = putStrLn $ "Congratulations! You completed the game.\n Final Score: " ++ show scoreboard

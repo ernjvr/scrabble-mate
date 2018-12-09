@@ -1,11 +1,10 @@
 module Validator
     ( isWordInDictionary
     , isAllCharsValid
-    , toLowerCase
     ) where
 
 import Factory
-import Data.Char
+import Util
 import qualified Data.Map as M
 import Data.Maybe
 
@@ -13,6 +12,8 @@ isWordInDictionary :: Foldable t => [Char] -> t [Char] -> Bool
 isWordInDictionary word dictionary =
   toLowerCase word `elem` dictionary
 
+isAllCharsValid :: [Char] -> String -> Bool
+isAllCharsValid [] _ = False
 isAllCharsValid word randomString =
   let chars = toLowerCase word
       string = toLowerCase randomString
@@ -40,6 +41,3 @@ isCharCountGreater (c:cs) wordMap randomMap =
   let wordCharCount = fromJust (M.lookup c wordMap)
       randomCharCount = fromJust (M.lookup c randomMap)
   in if wordCharCount > randomCharCount then True else isCharCountGreater cs wordMap randomMap
-
-toLowerCase :: String -> String
-toLowerCase word = (map toLower word)

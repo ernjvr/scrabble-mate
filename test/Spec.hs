@@ -2,6 +2,8 @@ import Test.Hspec
 import Game
 import Validator
 import Factory
+import Util
+import qualified Data.Map as M
 
 main :: IO ()
 main = hspec $ do
@@ -38,3 +40,18 @@ main = hspec $ do
       isAllCharsValid "hello" "hello" `shouldBe` True
       isAllCharsValid "HELLO" "hello" `shouldBe` True
       isAllCharsValid "hello" "HELLO" `shouldBe` True
+      isAllCharsValid "hello" "helllo" `shouldBe` True
+      isAllCharsValid "olleh" "hello" `shouldBe` True
+      isAllCharsValid "helllo" "hello" `shouldBe` False
+      isAllCharsValid "" "hello" `shouldBe` False
+
+  describe "makeMap" $ do
+    it "should return a map consisting of a key for each given word's letters and the number of occurences of that letter in the given word" $ do
+      makeMap "hello"   `shouldBe` (M.fromList [('e',1),('h',1),('l',2),('o',1)])
+      makeMap ""   `shouldBe` (M.fromList [])
+
+  describe "toLowerCase" $ do
+    it "should return a given string in lowercase letters" $ do
+      toLowerCase "HELLO" `shouldBe` "hello"
+      toLowerCase "Hello" `shouldBe` "hello"
+      toLowerCase "hellO" `shouldBe` "hello"
