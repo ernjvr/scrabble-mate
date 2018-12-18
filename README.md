@@ -1,7 +1,7 @@
 # scrabble-mate
 A fun word building game to help improve your English vocabulary and spelling. 
 
-A player is given 20 random scrambled letters. 
+A player is given 20 random letters. 
 The challenge is to construct a valid correctly-spelled English dictionary word using those letters.  
 Each of the 20 letters may only be used once to construct a word.   
 If player uses same letter more than once, no points will be awarded and game will move to the next round. 

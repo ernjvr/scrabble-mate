@@ -34,7 +34,7 @@ displayTurnResult :: Bool -> IO()
 displayTurnResult result =
     if result
       then
-        putStrLn $ "Congratulations! You entered a valid word"
+        putStrLn $ "Congratulations! You entered a valid word."
       else
         putStrLn $ "Sorry! You entered an invalid word."
 
@@ -52,7 +52,7 @@ displayCharsValidity validChars =
   if validChars then
       putStrLn $ "All characters entered are valid :)"
     else
-      putStrLn $ "Sorry! The characters entered are invalid. Please only use characters from the random letters above. Do not to use more of the same type of characters than what is provided above."
+      putStrLn $ "Sorry! The characters entered are invalid. Please only use characters from the random letters above. Do not use more of the same type of characters than what is provided above."
 
 displayGameComplete :: Int ->  IO()
-displayGameComplete scoreboard = putStrLn $ "Congratulations! You completed the game.\n Final Score: " ++ show scoreboard
+displayGameComplete scoreboard = putStrLn $ "Congratulations! You completed the game.\nFinal Score: " ++ show scoreboard

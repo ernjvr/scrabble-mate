@@ -6,6 +6,7 @@ import Validator
 import Util
 import Data.Char
 import System.Random
+import System.IO
 import Data.List
 import qualified Data.Map as M
 import Data.Maybe
@@ -16,10 +17,12 @@ main = do
   let dictionary = words (toLowerCase fileContent)
       scoreboard = 0
       roundNumber = 1
+  hSetBuffering stdout NoBuffering
   playTurn dictionary scoreboard roundNumber
 
 playTurn :: Foldable t => t [Char] -> Int -> Int -> IO ()
 playTurn dictionary scoreboard roundNumber = do
+  displayScore scoreboard
   displayTurnCounter roundNumber
   randomGenerator <- newStdGen
   let randomString = makeRandomString randomGenerator
@@ -33,7 +36,6 @@ playTurn dictionary scoreboard roundNumber = do
       turnResult = validChars && validWordInDictionary
       newScoreboard = getScore turnResult word scoreboard
   displayTurnResult turnResult
-  displayScore newScoreboard
   if isGameComplete roundNumber
     then
       displayGameComplete newScoreboard
